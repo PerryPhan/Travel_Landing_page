@@ -1,0 +1,176 @@
+.overhidden {
+    overflow: hidden;
+}
+
+.animation-rise {
+    animation: rise .6s ease-out forwards;
+    opacity: 0;
+}
+
+.name .animation-rise {
+    animation-delay: 0s;
+}
+
+.capital .animation-rise:nth-child(1) {
+    animation-delay: .2s;
+}
+
+.capital .animation-rise:nth-child(2) {
+    animation-delay: .4s;
+}
+
+.info.animation-rise {
+    animation-delay: .6s;
+}
+
+.interact.animation-rise {
+    animation-delay: .6s;
+}
+
+@keyframes stretch-up {
+    0% {
+        top: 34%;
+        left: 36.4%;
+        width: 17%;
+        height: 37.7%;
+        min-width: 0;
+        z-index: 1;
+    }
+
+    100% {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        z-index: 1;
+    }
+}
+
+@keyframes rise {
+    0% {
+        opacity: 0;
+        transform: translateY(150%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes fall {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    70% {
+        opacity: 0.05;
+        transform: translateY(90%);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
+@keyframes slideRight{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(100%);
+    }
+}
+@keyframes slidefortextstart {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes slidefortextend {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-106%);
+    }
+}
+
+@keyframes zoomout {
+    0% {
+        z-index: 0;
+        filter: brightness(1);
+        transform: scale(1);
+    }
+
+    90% {
+        filter: brightness(0);
+    }
+
+    100% {
+        z-index: 0;
+        filter: brightness(0);
+        transform: scale(1.5);
+        background-color: black;
+    }
+}
+
+/* This cubic cubic-bezier(.15,.64,.18,1.04) */
+.slide {
+    animation: slide 1s .2s cubic-bezier(.15, .64, .18, 1.04) forwards;
+}
+.animation-slideright{
+    animation: slideRight 1s .1s cubic-bezier(.15, .64, .18, 1.04) forwards;
+}
+
+.animation-slidetext-start {
+    animation: slidefortextstart 1s cubic-bezier(.15, .64, .18, 1.04) forwards;
+}
+
+.animation-slidetext-end {
+    animation: slidefortextend 1s cubic-bezier(.15, .64, .18, 1.04) forwards;
+}
+
+.animation-zoomout {
+    animation: zoomout 1.5s cubic-bezier(.15, .64, .18, 1.04) forwards;
+}
+
+.animation-stretchup {
+    animation: stretch-up 1.5s cubic-bezier(.15, .64, .18, 1.04) forwards;
+}
+
+.card.active {
+    box-shadow: none !important;
+    background-color: transparent;
+}
+
+.card.active img {
+    transition: 0;
+    opacity: 0;
+}
+
+.card.active .content {
+    animation: fall .3s ease-in forwards;
+}
+
+.w-15 {
+    width: 15%;
+}

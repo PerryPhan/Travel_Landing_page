@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="global.png" type="image/x-icon" />
+    <link rel="stylesheet" href="all.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="animation.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Global Express</title>
+  </head>
+  <!--! Reference: https://dribbble.com/shots/11012652--Timed-Cards-Opening  -->
+  <body>
+    <!-- br -->
+    <!-- * CONTAINER START  -->
+    <div class="sm-progress">
+      <div value="30" max="100" id="timelap"></div>
+    </div>
+    <div class="container-fluid p-3" id="container">
+      <!-- ---------!START NAV ---------------->
+      <!-- br -->
+      <!-- br -->
+      <nav class="desktop row m-0">
+        <!-- -------START .forbrand----------->
+        <div class="forbrand col-6 h-100 d-flex align-items-center">
+          <!-- br -->
+          <div class="brand_img">
+            <i class="fas fa-globe"></i>
+          </div>
+          <!-- br -->
+          <div class="brand_name">globe express</div>
+        </div>
+        <!-- -------END .forbrand-------------->
+        <!-- br -->
+        <!-- br -->
+        <!-- -------!START .forlinks ( HOME/ HOLIDAYS/ ..)------------>
+        <ul class="forlinks col-5 h-100 d-flex align-items-center">
+          <li class="active"><a href="#">home</a></li>
+          <li class=""><a href="#">holidays</a></li>
+          <li class=""><a href="#">destinations</a></li>
+          <li class=""><a href="#">flight</a></li>
+          <li class=""><a href="#">offers</a></li>
+          <li class=""><a href="#">contacts</a></li>
+        </ul>
+        <!-- -------!END .forlinks ( HOME/ HOLIDAYS/ ..)------------>
+        <!-- br -->
+        <!-- br -->
+        <!-- -------START .fortools ( SEARCH / USER )------------>
+        <div
+          class="fortools col-1 d-flex justify-content-center align-items-center h-100"
+        >
+          <!-- br -->
+          <button class="btn bg-transparent rounded">
+            <i class="fas fa-search"></i>
+          </button>
+          <!-- br -->
+          <button class="btn bg-transparent rounded">
+            <i class="fas fa-user"></i>
+          </button>
+        </div>
+        <!-- br -->
+        <!-- -------END .fortools ( SEARCH / USER )------------>
+      </nav>
+      <!-- ---------!END NAV --------------->
+      <!-- br -->
+      <!-- br -->
+      <!-- br -->
+      <!-- br -->
+      <!----------!START NAV MOBILE------------>
+      <nav class="mobile row">
+        <!----------START .forbrand----------->
+        <div class="forbrand col-10 d-flex align-items-center">
+          <div class="brand_img"><i class="fas fa-globe"></i></div>
+          <div class="brand_name">globe express</div>
+        </div>
+
+        <div class="hamburger-menu col-2">
+          <div class="lines"></div>
+        </div>
+        <!----------END .forbrand----------->
+        <!----------!START DROPDOWN ---------->
+        <div class="dropdown d-none">
+          <div class="fortools w-100 h-100">
+            <!-- br -->
+            <button class="btn bg-transparent rounded">
+              <i class="fas fa-search"></i>
+            </button>
+            <!-- br -->
+            <button class="btn bg-transparent rounded">
+              <i class="fas fa-user"></i>
+            </button>
+            <button class="exit btn">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <ul class="forlinks w-100 h-100">
+            <li class="active"><a href="#">home</a></li>
+            <li class=""><a href="#">holidays</a></li>
+            <li class=""><a href="#">destinations</a></li>
+            <li class=""><a href="#">flight</a></li>
+            <li class=""><a href="#">offers</a></li>
+            <li class=""><a href="#">contacts</a></li>
+          </ul>
+        </div>
+        <!----------!END DROPDOWN ---------->
+      </nav>
+      <!----------!END NAV MOBILE------------>
+
+      <!-------------!START MAIN -------------->
+      <main>
+        <div class="blank row"></div>
+        <div class="row ">
+          <div class="col-lg-4 empty-left"></div>
+          <!-- br -->
+          <!-- br -->
+          <!----------START Destination heroes Slideshow ------------->
+          <div class="destination_slideshow col-lg-8">
+            <!-- * Each card includes : JSON  -->
+            <!-- --------!START Visual [...cards] ---------- -->
+            <div class="visual" id="card-arr">
+              <!-------------- CARD AREA -------------- CARD AREA ----------------- CARD AREA ---------------- CARD AREA ------------------ CARD AREA --------->
+
+              <!-------------- CARD AREA -------------- CARD AREA ----------------- CARD AREA ---------------- CARD AREA ------------------ CARD AREA --------->
+            </div>
+            <!----------! END Visual [...cards] -------------->
+            <!-- br -->
+            <!---------- START Interact ( <, >, Progress bar) -------->
+            <div class="interact m-0">
+              <button class="btn">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="btn">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+              <div class="slide_progress">
+                <div id="progress" value="30" max="100"></div>
+              </div>
+              <div class="overhidden m-0">
+                <div class="slide_number animation-slidetext">01</div>
+              </div>
+            </div>
+            <!----------END Interact ( <, >, Progress bar) -------->
+          </div>
+          <!----------END Destination heroes Slideshow -------------->
+        </div>
+      </main>
+      <!------------!END MAIN -------------->
+      <div class="p-0 m-0 overhidden" id="bg-arr">
+        <!-------------- BG AREA -------------- BG AREA ----------------- BG AREA ---------------- BG AREA ------------------ BG AREA --------->
+
+        <!-------------- BG AREA -------------- BG AREA ----------------- BG AREA ---------------- BG AREA ------------------ BG AREA --------->
+      </div>
+    </div>
+    <!-- * CONTAINER END  -->
+    <script src="jquery.min.js"></script>
+    <script>
+      // ----------------------------- DATA ------------------------------------------ DATA ------------------------------------------------ DATA -------
+      var card_arr = [
+        {
+          id: 1,
+          content_name: "Switzerlahd Alps",
+          content_capital: "saint\nantonien",
+          content_imgsrc: "./unplash1.jpg",
+        },
+        {
+          id: 2,
+          content_name: "Japan",
+          content_capital: "nagand\nprefecture",
+          content_imgsrc: "./unplash2.jpg",
+        },
+        {
+          id: 3,
+          content_name: "Sahara Dessert - Morocco",
+          content_capital: "marrakech\nmerzouga",
+          content_imgsrc: "",
+        },
+        {
+          id: 4,
+          content_name: "Sierra Nevado - United States",
+          content_capital: "yosemite\nnationa park",
+          content_imgsrc: "",
+        },
+        {
+          id: 5,
+          content_name: "Tanifa - Spain",
+          content_capital: "los lances\nbeach",
+          content_imgsrc: "",
+        },
+      ];
+      var delay = 0.1;
+      card_arr.map((each) => {
+        delay += 0.08;
+        $(each).css("animation-delay", `${delay}s`);
+      });
+      var thisCurrent = ""; // save Background at the present
+      var thisCard = ""; // save Card at the present
+      // ----------------------------- FUNC ------------------------------------------ FUNC ------------------------------------------------ FUNC -------
+      function convertObjtoArr(obj) {
+        return obj
+          ? [obj.id, obj.content_name, obj.content_capital, obj.content_imgsrc]
+          : [];
+      }
+      function formatContentCapital(str) {
+        let arr = str.split("\n");
+        let format = "";
+        for (s of arr) {
+          format += `<div class="overhidden p-0 m-0"><p class="p-0 m-0 animation-rise">${s}</p></div>`;
+        }
+        return format;
+      }
+      function generateCard(id, content_name, content_capital, content_imgsrc) {
+        if (!id) return "";
+        return `
+          <div class="card" id="${id}">
+            ${
+              content_imgsrc
+                ? `<img src="${content_imgsrc}" alt="card-img">`
+                : ``
+            }
+            <div class="content">
+                <div class="name">
+                  ${content_name}
+                </div>
+                <div class="capital">
+                  ${content_capital}
+                </div>
+            </div>
+          </div>
+        `;
+      }
+      function generateBg(
+        id,
+        content_name,
+        content_capital,
+        content_imgsrc,
+        visible,
+        contentOnly
+      ) {
+        let content_capital_format = content_capital
+          ? formatContentCapital(content_capital)
+          : "No Capital";
+        let content = `
+          <nav class="bg-transparent" style="box-shadow: none;"></nav>
+          <div class="blank"></div>
+          <div class="destination_introducing overhidden ">
+            <div class="name overhidden"> <p class="animation-rise"> ${content_name} </p> </div>
+            <div class="capital text-uppercase ">
+              ${content_capital_format}
+            </div>
+            <div class="info animation-rise overhidden">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia
+                aut, saepe fuga quas, qui quia ipsam in voluptate nostrum quo
+            </div>
+            <div class="interact animation-rise">
+                <!-- Love btn -->
+                <button class="love btn ">
+                    <i class="fas fa-bookmark"></i>
+                </button>
+                <!-- Discover Location btn  -->
+                <button class="discover btn">Discover Location</button>
+            </div>
+          </div> `;
+        if (contentOnly) return content;
+        return `
+        <div class="currentBg ${visible ? "" : "d-none"}" curid="${id}" ${
+          content_imgsrc
+            ? `style="background: url('${content_imgsrc}');background-size: cover"`
+            : ""
+        }>
+          ${content}
+        </div>
+        `;
+      }
+      function progress(from, value) {
+        let backward = from > value;
+        let progressbar = $("#progress");
+        let distance = Math.abs(value - from);
+        let max = $("#progress").attr("max");
+        progressbar.css("width", `${value * (100 / max)}%`);
+      }
+      // ----------------------------- LOGIC ------------------------------------------ LOGIC ------------------------------------------------ LOGIC -------
+      function initSlider() {
+        $("#card-arr").html("");
+        $("#bg-arr").html("");
+        // First one of #bg-arr is visible and of #card-arr is opposite
+        let firstCard = convertObjtoArr(card_arr[0]);
+        $("#card-arr").append(generateCard(...firstCard, true));
+        $("#bg-arr").append(generateBg(...firstCard, true));
+        $(".card:first-child").addClass("d-none");
+        // Add the rests to #card-arr & #bg-arr
+        card_arr.slice(1).forEach((card) => {
+          if (card) {
+            let convert = convertObjtoArr(card);
+            $("#card-arr").append(generateCard(...convert));
+            $("#bg-arr").append(generateBg(...convert, false));
+          }
+        });
+        $("#progress").attr("max", card_arr.length * 10);
+        progress(0, 10);
+      }
+      async function activethisSlide( activeid ) {
+        // INIT
+          let id = activeid;
+          // let id = this.id;
+          let index = id - 1;
+          let activeItem = card_arr.find((card) => card.id === +id);
+          let activeCard = $(`.card#${id}`);
+          let activeCurrent = $(`.currentBg[curid=${id}]`);
+          thisCard = thisCard ? thisCard : $(".card:first-child");
+          thisCurrent = thisCurrent ? thisCurrent : $(".currentBg:first-child");
+          const isVisible = true;
+          const contentOnly = true;
+          // CATCHING ERROR
+          console.log(thisCard.attr('id'), id);
+          // if( (id - thisCard.attr('id')) != 1) return;
+        // ----------------------------- ANIMATION FLOW ------------------------------------------ ANIMATION FLOW -----------------------------
+        // >>>>>>>>>>>>>>>>>>>>> BEGIN THE FLOW >>>>>>>>>>>>>>>>>>>>>>>>>>
+              // -- Background
+              await $(".currentBg:not(.d-none)").addClass("animation-zoomout");
+              await activeCurrent
+                .addClass("animation-stretchup")
+                .removeClass("d-none");
+              // -- Card
+              await activeCard.addClass("active");
+              await $(".card").addClass("slide");
+              await $(".animation-slidetext-end").removeClass(
+                "animation-slidetext-end"
+              );
+              // -- Index
+              await $(".slide_number").addClass("animation-slidetext-start");
+        // >>>>>>>>>>>>>>>>>>>>> MIDDLE THE FLOW >>>>>>>>>>>>>>>>>>>>>>>>>>
+              await setTimeout(() => {
+                // -- Background
+                activeCurrent.html(
+                  generateBg(...convertObjtoArr(activeItem), isVisible, contentOnly)
+                );
+                // -- Card
+                thisCard.removeClass("d-none");
+                $("#card-arr").append(thisCard);
+                console.log('Remove event')
+                // $(".card").unbind("click"); // <- Remove Click Event of Card
+                // -- Index
+                $(".slide_number")
+                  .removeClass("animation-sidetext-start")
+                  .addClass("animation-slidetext-end")
+                  .text(id >= 10 ? id : "0" + id);
+                progress(thisCard.attr("id") * 10, id * 10);
+              }, 200);
+        // >>>>>>>>>>>>>>>>>>>>> END THE FLOW >>>>>>>>>>>>>>>>>>>>>>>>>>
+              await setTimeout(() => {
+                // -- Background
+                if (thisCurrent.hasClass("animation-stretchup"))
+                  thisCurrent.removeClass("animation-stretchup");
+                thisCurrent.removeClass("animation-zoomout").addClass("d-none");
+                thisCurrent = activeCurrent.removeClass("animation-stretchup");
+                // -- Card
+                console.log("Add event");
+                $(".card").removeClass("slide").on("click", activethisSlide); // <- Add Click Event of Card
+                activeCard.addClass("d-none");
+                thisCard = activeCard.removeClass("active"); // This means the present card is active
+              }, 1500);
+              // = animation duration
+      }
+      async function process() {
+        let id = 2;
+        await initSlider();
+        // First lap to warm up
+        await $('#timelap').css('width','0');
+        await $('#timelap').animate({
+          width: '100%',
+        }, {duration: 4000,})
+        
+        await $('#timelap').css('margin-left','0');
+        await $('#timelap').animate({
+          marginLeft: '100%',
+        }, {duration: 3500,})
+        // Loop for lap
+        await setInterval( async function() {
+          id = id > card_arr.length ? 1: id; 
+          await $('#timelap').css('width','0');
+          await $('#timelap').animate({
+            width: '100%',
+          }, {duration: 4000,})
+          
+          await $('#timelap').css('margin-left','0');
+          await $('#timelap').animate({
+            marginLeft: '100%',
+          }, {duration: 3500,})
+
+          await activethisSlide( id++ );
+        }, 8000);
+        
+        // await $(".card").on("click", activethisSlide);
+      }
+      process();
+    </script>
+  </body>
+</html>
